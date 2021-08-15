@@ -1,10 +1,11 @@
-import turtle
-import letter_draw as ld
-import string
-from letter_grid import letter_grid
-from hangman_draw import *
-import random
 import linecache
+import random
+import string
+import turtle
+
+import letter_draw as ld
+from hangman_draw import *
+from letter_grid import letter_grid
 
 
 class Board:
@@ -73,8 +74,9 @@ class Board:
             tur.setheading(0)
             tur.fd(900)
 
-        for x in range(self.mistake + 1):
+        for x in range(min((self.mistake + 1, len(self.body_parts)))):
             if x == 0:
+
                 self.body_parts[x](self, erase=True)
             else:
                 self.body_parts[x](self)
